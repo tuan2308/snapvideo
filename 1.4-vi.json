@@ -3,6 +3,7 @@
 "maintenance":"2",
 "name":"Snap Video",
 "version":"1",
+"maintenance":"2",
 "new":"https://taoanhdep.com/nhan-phim-tat-snap-video/",
 "apiurl":"https://api.snapvideo.io/wp-json/aio-dl/api/?key=2023&url=",
 "filename":"snapvideo.io--",
