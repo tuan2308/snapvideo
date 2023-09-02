@@ -1,0 +1,44 @@
+{
+"id":"1",
+"name":"Snap Video",
+"version":"1",
+"new":"https://taoanhdep.com/nhan-phim-tat-snap-video/",
+"apiurl":"https://api.snapvideo.io/wp-json/aio-dl/api/?key=2023&url=",
+"filename":"snapvideo.io--",
+"urlred": "https://api.snapvideo.io/red.php?url=",
+"newdesc":"Đã có phiên bản mới, Cập nhật ngay nào!",
+"newtitle":"🆕 Cập nhật phím tắt",
+"notiformat":"Chọn định dạng",
+"notivideo":"Tải video hoàn tất. Truy cập snapvideo.io để tải chất lượng cao hơn.",
+"notiaudio":"Tải âm thanh hoàn tất. Truy cập snapvideo.io để tải chất lượng cao hơn.",
+"notiimage":"Tải hình ảnh hoàn tất. Truy cập snapvideo.io để tải chất lượng cao hơn.",
+"notimedia":"Tải phương tiện hoàn tất. Truy cập snapvideo.io để tải chất lượng cao hơn.",
+"notierror":"Không thể tải",
+"notierror2":"Lỗi! Hãy thử những cách sau:",
+
+"menux0":"Menu tuỳ chọn",
+"menux1":"Nhập link video cần tải",
+"menux2":"Hướng dẫn sử dụng",
+"menux3":"Xem nền tảng được hỗ trợ",
+
+"menux1-content":"Nhập URL bạn muốn tải Video (Tự động dán bộ nhớ sao chép)",
+"menux2-content":"𝗖𝗼́ 𝟮 𝗰𝗮́𝗰𝗵 𝘁𝗮̉𝗶:\n\nℂ𝕒́𝕔𝕙 𝟙:\n\nBấm trực tiếp vào phím tắt => Dán link video\n\nℂ𝕒́𝕔𝕙 𝟚:\nVào app cần tải video ví dụ Tiktok => Nhấn vào biểu tượng chia sẻ => Thêm... => Snap Video",
+"menux3-content":"9GAG - Video\nAkıllıTV - Video\nBandcamp - Music\nBilibili - Video\nBitchute - Video\nBlogger/Blogspot - Video\nBuzzfeed - Video\nCapcut - Video\nChingari - Video\nDailymotion - Video\nDouyin - Video (Không logo)\nESPN - Video\nFacebook - Video và Audio\nFebspot - Video\nFlickr - Video\nGaana - Music\nIfunny - Video\nIMDB - Video\nImgur - Video\nInstagram - Video và Photo\nIzlesene - Video\nKickstarter - Video\nKinemaster - Video\nKuaishou - Video (Không logo)\nKwai - Video\nLikee - Video\nLinkedIn - Video\nMashable - Video\nMixcloud - Music\nMxTakatak - Music\nOdnoklassniki (Ok.ru) - Video\nPeriscope - Video\nPinterest - Video\nPuhuTV - Video\nReddit - Video\nRumble - Video\nSnapchat - Video\nSoundcloud - Music (MP3 và OGG)\nStreamable - Video\nTED - Video và Audio\nThreads - Video và Photo\nTiktok - Video (Không logo) và Music\nTumblr - Video\nTwitch Clip - Video\nTwitter - Video\nVimeo - Video\nVK - Video\nXiaohongshu - Video\nXnxx - Video\nXvideos - Video\nYouTube - Video và Audio\nZing Mp3 - Music\n",
+
+"menu1":"Tải trực tiếp bằng website",
+"menu2":"Update phím tắt",
+"menu3":"Liên hệ",
+"menu4":"Xem thông báo mới nhất",
+"menu5":"Menu chính",
+"menu3-content":"http://m.me/snapvideo.io?text=T%C3%B4i%20g%E1%BA%B7p%20l%E1%BB%97i%20khi%20t%E1%BA%A3i%20video%20t%E1%BB%AB:%20",
+"menu4-content": "https://www.facebook.com/snapvideo.io",
+
+
+"ty-title":"Xem thêm định dạng",
+"ty-sub":"Hỗ trợ tối đa 4K, 8K 60FPS",
+
+
+"noti-done1":"Tải hoàn tất bạn có muốn mở Album ảnh không?",
+"noti-done2":"Tải hoàn tất bạn có muốn mở Tệp không?"
+
+}
