@@ -8,6 +8,7 @@
 "apiurl":"https://api.snapvideo.io/wp-json/aio-dl/api/?key=2023&url=",
 "filename":"snapvideo.io--",
 "urlred": "https://api.snapvideo.io/red.php?url=",
+"maintennoti":"Phím tắt đang bảo trì!",
 "newdesc":"Đã có phiên bản mới, Cập nhật ngay nào!",
 "newtitle":"🆕 Cập nhật phím tắt",
 "notiformat":"Chọn định dạng",
