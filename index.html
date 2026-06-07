@@ -121,6 +121,23 @@
     }
     .btn-shortcut:active { transform: translateY(0); }
     .btn-shortcut svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-shortcut.is-loading,
+    .btn-shortcut.is-disabled {
+      pointer-events: none;
+      opacity: 0.72;
+    }
+    .btn-shortcut.is-loading svg { display: none; }
+    .btn-spinner {
+      display: none;
+      width: 18px; height: 18px;
+      border: 2px solid rgba(255,255,255,0.42);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      flex-shrink: 0;
+    }
+    .btn-shortcut.is-loading .btn-spinner { display: inline-block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
     .section-divider {
       display: flex; align-items: center; gap: 16px;
       max-width: 900px; margin: 0 auto 40px;
@@ -227,11 +244,12 @@
     <img class="hero-icon" src="./Shortcuts.png" alt="Snap Video">
     <h1>Get Shortcuts<br>Snap Video</h1>
     <p>Save videos instantly. The fastest way to download content directly to your library.</p>
-    <a class="btn-shortcut" href="https://www.icloud.com/shortcuts/3bab6b871b6840a7bb4bd3fc8a65056a" target="_blank" rel="noopener">
+   <a id="shortcutBtn" class="btn-shortcut is-loading" href="#" target="_blank" rel="noopener" aria-disabled="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 5v14M5 12l7 7 7-7"/>
       </svg>
-      Get Shortcuts
+      <span class="btn-spinner" aria-hidden="true"></span>
+      <span class="btn-label">Loading...</span>
     </a>
   </section>
 
@@ -266,80 +284,112 @@
   </footer>
 
   <script>
-    var SHEET_URL = 'https://docs.google.com/spreadsheets/d/1n-6n5S2EobNsPT_jBf6iYmYgzV-r8pmos6VZjCW9Dqw/gviz/tq?tqx=out:json&tq&gid=0';
-    var tbody = document.getElementById('sheetRows');
-    var statusText = document.getElementById('statusText');
+ const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1n-6n5S2EobNsPT_jBf6iYmYgzV-r8pmos6VZjCW9Dqw/gviz/tq?tqx=out:json&tq&gid=0';
 
-    function escapeHTML(value) {
-      return String(value == null ? '—' : value)
+function getCell(row, index) {
+    return row?.c?.[index]?.v ?? '';
+}
+
+function versionParts(version) {
+    return String(version)
+        .trim()
+        .replace(/^v/i, '')
+        .split('.')
+        .map(part => Number.parseInt(part, 10) || 0);
+}
+
+function compareVersions(a, b) {
+    const left = versionParts(a);
+    const right = versionParts(b);
+    const length = Math.max(left.length, right.length);
+
+    for (let i = 0; i < length; i += 1) {
+        const diff = (left[i] || 0) - (right[i] || 0);
+
+        if (diff !== 0) {
+            return diff;
+        }
+    }
+
+    return 0;
+}
+
+function getLatestRow(rows) {
+    return rows
+        .filter(row => getCell(row, 0) && getCell(row, 4))
+        .sort((a, b) => compareVersions(getCell(b, 0), getCell(a, 0)))[0];
+}
+
+function escapeHtml(value) {
+    return String(value)
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+        .replace(/'/g, '&#39;');
+}
+
+async function loadSheet() {
+    const shortcutBtn = document.getElementById('shortcutBtn');
+    const shortcutLabel = shortcutBtn.querySelector('.btn-label');
+    const sheetRows = document.getElementById('sheetRows');
+    const statusText = document.getElementById('statusText');
+
+    try {
+        const res = await fetch(SHEET_URL);
+        const text = await res.text();
+
+        const json = JSON.parse(
+            text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1)
+        );
+
+        const rows = json.table.rows || [];
+
+        const latestRow = getLatestRow(rows);
+        const latestUrl = getCell(latestRow, 4);
+
+        if (latestUrl) {
+            shortcutBtn.href = latestUrl;
+            shortcutBtn.classList.remove('is-loading', 'is-disabled');
+            shortcutBtn.removeAttribute('aria-disabled');
+            shortcutLabel.textContent = 'Get Shortcuts';
+        } else {
+            shortcutBtn.classList.remove('is-loading');
+            shortcutBtn.classList.add('is-disabled');
+            shortcutBtn.setAttribute('aria-disabled', 'true');
+            shortcutLabel.textContent = 'Unavailable';
+        }
+
+        let html = '';
+
+        rows.forEach(row => {
+            const version = getCell(row, 0) || '-';
+            const updateInfo = getCell(row, 2) || getCell(row, 1) || '-';
+
+            html += `
+                <tr>
+                    <td><span class="ver-badge">${escapeHtml(version)}</span></td>
+                    <td>${escapeHtml(updateInfo)}</td>
+                </tr>
+            `;
+        });
+
+        sheetRows.innerHTML =
+            html || `<tr class="empty-row"><td colspan="2">Không có dữ liệu</td></tr>`;
+        statusText.textContent = latestRow ? `Latest ${getCell(latestRow, 0)}` : 'No data';
+
+    } catch (err) {
+        sheetRows.innerHTML =
+            `<tr class="empty-row"><td colspan="2">Không thể tải dữ liệu</td></tr>`;
+        statusText.textContent = 'Load failed';
+        shortcutBtn.classList.remove('is-loading');
+        shortcutBtn.classList.add('is-disabled');
+        shortcutBtn.setAttribute('aria-disabled', 'true');
+        shortcutLabel.textContent = 'Unavailable';
     }
+}
 
-    function renderRows(rows) {
-      if (!rows || !rows.length) {
-        tbody.innerHTML = '<tr class="empty-row"><td colspan="2">⚠ Không có dữ liệu hoặc Google Sheet chưa public.</td></tr>';
-        statusText.textContent = 'No data';
-        return;
-      }
-
-      var html = rows.map(function(row) {
-        return '<tr>' +
-          '<td><span class="ver-badge">' + escapeHTML(row.ver) + '</span></td>' +
-          '<td>' + escapeHTML(row.info) + '</td>' +
-        '</tr>';
-      }).join('');
-
-      tbody.innerHTML = html;
-      statusText.textContent = 'Live data';
-    }
-
-    function parseGoogleSheet(rawText) {
-      var start = rawText.indexOf('{');
-      var end = rawText.lastIndexOf('}');
-
-      if (start === -1 || end === -1) {
-        throw new Error('Invalid Google Sheet response');
-      }
-
-      var json = JSON.parse(rawText.substring(start, end + 1));
-      var rows = (json.table && json.table.rows) ? json.table.rows : [];
-      var cols = (json.table && json.table.cols) ? json.table.cols : [];
-
-      var verIdx = 0;
-      var infoIdx = 2;
-
-      cols.forEach(function(col, index) {
-        var label = String(col.label || '').trim().toLowerCase();
-        if (label === 'ver' || label === 'version') verIdx = index;
-        if (label.indexOf('info') !== -1 || label.indexOf('update') !== -1) infoIdx = index;
-      });
-
-      return rows.map(function(row) {
-        var cells = row.c || [];
-        return {
-          ver: cells[verIdx] && cells[verIdx].v != null ? cells[verIdx].v : '—',
-          info: cells[infoIdx] && cells[infoIdx].v != null ? cells[infoIdx].v : '—'
-        };
-      });
-    }
-
-    fetch(SHEET_URL, { cache: 'no-store' })
-      .then(function(response) {
-        if (!response.ok) throw new Error('HTTP ' + response.status);
-        return response.text();
-      })
-      .then(function(text) {
-        renderRows(parseGoogleSheet(text));
-      })
-      .catch(function(error) {
-        console.error(error);
-        tbody.innerHTML = '<tr class="empty-row"><td colspan="2">⚠ Không thể tải dữ liệu. Hãy kiểm tra quyền Google Sheet hoặc CORS.</td></tr>';
-        statusText.textContent = 'Load error';
-      });
+loadSheet();
   </script>
 
   <!-- Google tag (gtag.js) -->
