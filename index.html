@@ -7,7 +7,7 @@
   <meta name="googlebot" content="noindex">
   <title>Snap Video</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f4f8ff;
@@ -94,10 +94,16 @@
       font-size: 1.05rem; max-width: 480px;
       line-height: 1.7; margin-bottom: 36px;
     }
-    .btn-shortcut {
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .btn-shortcut,
+    .btn-api {
       display: inline-flex; align-items: center; gap: 10px;
-      background: var(--accent);
-      color: #fff;
       font-family: 'Syne', sans-serif;
       font-weight: 700; font-size: 0.95rem;
       letter-spacing: 0.01em;
@@ -106,8 +112,12 @@
       text-decoration: none;
       border: none; cursor: pointer;
       transition: all 0.2s ease;
-      box-shadow: 0 8px 30px rgba(1,105,217,0.32);
       position: relative; overflow: hidden;
+    }
+    .btn-shortcut {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(1,105,217,0.32);
     }
     .btn-shortcut::after {
       content: '';
@@ -115,12 +125,27 @@
       background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
       pointer-events: none;
     }
-    .btn-shortcut:hover {
+    .btn-api {
+      background: #fff;
+      color: var(--accent);
+      border: 1px solid rgba(1,105,217,0.24);
+      box-shadow: 0 8px 24px rgba(13,26,46,0.08);
+    }
+    .btn-shortcut:hover,
+    .btn-api:hover {
       transform: translateY(-2px);
+    }
+    .btn-shortcut:hover {
       box-shadow: 0 12px 40px rgba(1,105,217,0.44);
     }
-    .btn-shortcut:active { transform: translateY(0); }
-    .btn-shortcut svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-api:hover {
+      border-color: rgba(1,105,217,0.38);
+      box-shadow: 0 12px 32px rgba(13,26,46,0.12);
+    }
+    .btn-shortcut:active,
+    .btn-api:active { transform: translateY(0); }
+    .btn-shortcut svg,
+    .btn-api svg { width: 18px; height: 18px; flex-shrink: 0; }
     .btn-shortcut.is-loading,
     .btn-shortcut.is-disabled {
       pointer-events: none;
@@ -244,13 +269,23 @@
     <img class="hero-icon" src="./Shortcuts.png" alt="Snap Video">
     <h1>Get Shortcuts<br>Snap Video</h1>
     <p>Save videos instantly. The fastest way to download content directly to your library.</p>
-   <a id="shortcutBtn" class="btn-shortcut is-loading" href="#" target="_blank" rel="noopener" aria-disabled="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 5v14M5 12l7 7 7-7"/>
-      </svg>
-      <span class="btn-spinner" aria-hidden="true"></span>
-      <span class="btn-label">Loading...</span>
-    </a>
+    <div class="hero-actions">
+      <a id="shortcutBtn" class="btn-shortcut is-loading" href="#" target="_blank" rel="noopener" aria-disabled="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+        <span class="btn-spinner" aria-hidden="true">&nbsp;</span>
+        <span class="btn-label">Loading...</span>
+      </a>
+      <a class="btn-api" href="https://rapidapi.com/tuan2308/api/snap-video3" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 9l-4 3 4 3"/>
+          <path d="M16 9l4 3-4 3"/>
+          <path d="M14 5l-4 14"/>
+        </svg>
+        <span>API</span>
+      </a>
+    </div>
   </section>
 
   <div class="section-divider">
