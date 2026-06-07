@@ -1,1 +1,354 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex">
+  <meta name="googlebot" content="noindex">
+  <title>Snap Video</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f8ff;
+      --card: #ffffff;
+      --border: #dce8f7;
+      --accent: #0169d9;
+      --accent2: #0191f7;
+      --text: #0d1a2e;
+      --muted: #6b7fa3;
+      --success: #10b981;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(1,105,217,0.10) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(244,248,255,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 12px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .nav-brand img { width: 36px; height: 36px; border-radius: 10px; }
+    .nav-tag {
+      font-size: 0.7rem; font-weight: 500;
+      background: rgba(1,105,217,0.12);
+      color: var(--accent);
+      padding: 3px 9px; border-radius: 20px;
+      border: 1px solid rgba(1,105,217,0.22);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .hero {
+      position: relative;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center;
+      padding: 96px 24px 72px;
+      z-index: 1;
+    }
+    .hero-icon {
+      width: 96px; height: 96px;
+      border-radius: 24px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.06),
+                  0 20px 60px rgba(1,105,217,0.18),
+                  0 4px 12px rgba(0,0,0,0.10);
+      margin-bottom: 28px;
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: clamp(2.6rem, 6vw, 4.5rem);
+      letter-spacing: -0.04em; line-height: 1.05;
+      background: linear-gradient(135deg, #0d1a2e 20%, var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem; max-width: 480px;
+      line-height: 1.7; margin-bottom: 36px;
+    }
+    .btn-shortcut {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 0.95rem;
+      letter-spacing: 0.01em;
+      padding: 14px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      border: none; cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 30px rgba(1,105,217,0.32);
+      position: relative; overflow: hidden;
+    }
+    .btn-shortcut::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+      pointer-events: none;
+    }
+    .btn-shortcut:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(1,105,217,0.44);
+    }
+    .btn-shortcut:active { transform: translateY(0); }
+    .btn-shortcut svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .section-divider {
+      display: flex; align-items: center; gap: 16px;
+      max-width: 900px; margin: 0 auto 40px;
+      padding: 0 24px;
+    }
+    .section-divider span {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--muted); white-space: nowrap;
+    }
+    .section-divider::before, .section-divider::after {
+      content: ''; flex: 1;
+      height: 1px; background: var(--border);
+    }
+    .table-section {
+      max-width: 900px; margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .table-wrap {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(1,105,217,0.08), 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .table-header-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(1,105,217,0.04);
+    }
+    .table-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 0.95rem;
+      color: var(--text);
+    }
+    .status-dot {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 0.78rem; color: var(--success);
+    }
+    .status-dot::before {
+      content: '';
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 6px var(--success);
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    table { width: 100%; border-collapse: collapse; }
+    thead tr { background: rgba(0,0,0,0.02); }
+    th {
+      padding: 13px 20px;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--muted); text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 14px 20px;
+      font-size: 0.9rem; color: var(--text);
+      border-bottom: 1px solid rgba(220,232,247,0.8);
+      vertical-align: middle;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr { transition: background 0.15s; }
+    tbody tr:hover { background: rgba(1,105,217,0.04); }
+    .ver-badge {
+      display: inline-block;
+      background: rgba(1,105,217,0.09);
+      color: var(--accent);
+      border: 1px solid rgba(1,105,217,0.20);
+      border-radius: 8px;
+      padding: 3px 10px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 0.82rem;
+      letter-spacing: 0.03em;
+    }
+    .empty-row td {
+      text-align: center; padding: 40px;
+      color: var(--muted); font-size: 0.9rem;
+    }
+    footer {
+      text-align: center; padding: 32px;
+      color: var(--muted); font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+    footer span { color: var(--accent); }
+  </style>
+  <script>(function(s){s.dataset.zone='9418547',s.src='https://llvpn.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-brand">
+      <img src="./logo.png" alt="Snap Video Icon">
+      Snap Video
+    </div>
+    <div class="nav-tag">Shortcuts</div>
+  </nav>
+
+  <section class="hero">
+    <img class="hero-icon" src="./Shortcuts.png" alt="Snap Video">
+    <h1>Get Shortcuts<br>Snap Video</h1>
+    <p>Save videos instantly. The fastest way to download content directly to your library.</p>
+    <a class="btn-shortcut" href="https://www.icloud.com/shortcuts/3bab6b871b6840a7bb4bd3fc8a65056a" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+      Get Shortcuts
+    </a>
+  </section>
+
+  <div class="section-divider">
+    <span>Update Log</span>
+  </div>
+
+  <div class="table-section">
+    <div class="table-wrap">
+      <div class="table-header-bar">
+        <span class="table-title">Version History</span>
+        <span class="status-dot" id="statusText">Loading...</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Version</th>
+            <th>Update Info</th>
+          </tr>
+        </thead>
+        <tbody id="sheetRows">
+          <tr class="empty-row">
+            <td colspan="2">Đang tải dữ liệu...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>
+    <span>Snap Video</span>
+  </footer>
+
+  <script>
+    var SHEET_URL = 'https://docs.google.com/spreadsheets/d/1n-6n5S2EobNsPT_jBf6iYmYgzV-r8pmos6VZjCW9Dqw/gviz/tq?tqx=out:json&tq&gid=0';
+    var tbody = document.getElementById('sheetRows');
+    var statusText = document.getElementById('statusText');
+
+    function escapeHTML(value) {
+      return String(value == null ? '—' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function renderRows(rows) {
+      if (!rows || !rows.length) {
+        tbody.innerHTML = '<tr class="empty-row"><td colspan="2">⚠ Không có dữ liệu hoặc Google Sheet chưa public.</td></tr>';
+        statusText.textContent = 'No data';
+        return;
+      }
+
+      var html = rows.map(function(row) {
+        return '<tr>' +
+          '<td><span class="ver-badge">' + escapeHTML(row.ver) + '</span></td>' +
+          '<td>' + escapeHTML(row.info) + '</td>' +
+        '</tr>';
+      }).join('');
+
+      tbody.innerHTML = html;
+      statusText.textContent = 'Live data';
+    }
+
+    function parseGoogleSheet(rawText) {
+      var start = rawText.indexOf('{');
+      var end = rawText.lastIndexOf('}');
+
+      if (start === -1 || end === -1) {
+        throw new Error('Invalid Google Sheet response');
+      }
+
+      var json = JSON.parse(rawText.substring(start, end + 1));
+      var rows = (json.table && json.table.rows) ? json.table.rows : [];
+      var cols = (json.table && json.table.cols) ? json.table.cols : [];
+
+      var verIdx = 0;
+      var infoIdx = 2;
+
+      cols.forEach(function(col, index) {
+        var label = String(col.label || '').trim().toLowerCase();
+        if (label === 'ver' || label === 'version') verIdx = index;
+        if (label.indexOf('info') !== -1 || label.indexOf('update') !== -1) infoIdx = index;
+      });
+
+      return rows.map(function(row) {
+        var cells = row.c || [];
+        return {
+          ver: cells[verIdx] && cells[verIdx].v != null ? cells[verIdx].v : '—',
+          info: cells[infoIdx] && cells[infoIdx].v != null ? cells[infoIdx].v : '—'
+        };
+      });
+    }
+
+    fetch(SHEET_URL, { cache: 'no-store' })
+      .then(function(response) {
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return response.text();
+      })
+      .then(function(text) {
+        renderRows(parseGoogleSheet(text));
+      })
+      .catch(function(error) {
+        console.error(error);
+        tbody.innerHTML = '<tr class="empty-row"><td colspan="2">⚠ Không thể tải dữ liệu. Hãy kiểm tra quyền Google Sheet hoặc CORS.</td></tr>';
+        statusText.textContent = 'Load error';
+      });
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-93DGJ7EPCL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-93DGJ7EPCL');
+  </script>
+</body>
+</html>
