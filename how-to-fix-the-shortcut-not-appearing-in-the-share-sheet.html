@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex">
+  <meta name="googlebot" content="noindex">
+  <title>How to Fix the Shortcut Not Appearing in the Share Sheet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f8ff;
+      --card: #ffffff;
+      --border: #dce8f7;
+      --accent: #0169d9;
+      --accent2: #0191f7;
+      --text: #0d1a2e;
+      --muted: #6b7fa3;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(1,105,217,0.10) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(244,248,255,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-brand img {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+    }
+
+    .nav-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      background: rgba(1,105,217,0.12);
+      color: var(--accent);
+      padding: 3px 9px;
+      border-radius: 20px;
+      border: 1px solid rgba(1,105,217,0.22);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 88px 24px 80px;
+    }
+
+    .article-shell {
+      display: grid;
+      gap: 28px;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .article-icon {
+      width: 88px;
+      height: 88px;
+      border-radius: 22px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.06),
+                  0 20px 60px rgba(1,105,217,0.18),
+                  0 4px 12px rgba(0,0,0,0.10);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    h1 {
+      max-width: 820px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.15rem, 5vw, 4.15rem);
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      background: linear-gradient(135deg, #0d1a2e 20%, var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .article-card {
+      width: 100%;
+      max-width: 760px;
+      margin-top: 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(1,105,217,0.08), 0 1px 4px rgba(0,0,0,0.06);
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .article-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article-content {
+      padding: 28px 32px 32px;
+    }
+
+    .article-content p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .article-content p + p {
+      margin-top: 18px;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 32px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    footer span {
+      color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        padding: 14px 20px;
+      }
+
+      .nav-brand {
+        font-size: 1.05rem;
+      }
+
+      .nav-tag {
+        display: none;
+      }
+
+      main {
+        padding: 64px 18px 64px;
+      }
+
+      .article-card {
+        border-radius: 16px;
+      }
+
+      .article-content {
+        padding: 24px 22px 28px;
+      }
+
+      .article-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+  <script>(function(s){s.dataset.zone='9418547',s.src='https://llvpn.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</head>
+<body>
+  <nav>
+    <div class="nav-brand">
+      <img src="./logo.png" alt="Snap Video Icon">
+      Snap Video
+    </div>
+    <div class="nav-tag">Shortcuts</div>
+  </nav>
+
+  <main>
+    <article class="article-shell">
+      <img class="article-icon" src="./Shortcuts.png" alt="Snap Video">
+      <h1>How to Fix the Shortcut Not Appearing in the Share Sheet</h1>
+
+      <div class="article-card">
+        <img class="article-image" src="./how-to-fix-the-shortcut-not-appearing-in-the-share-sheet.webp" alt="How to fix the shortcut not appearing in the Share Sheet">
+        <div class="article-content">
+          <p>When you tap Share and don't see Snap Video even though you've already added this shortcut, it's usually caused by a common iPhone issue where all shortcuts disappear from the Share Sheet.</p>
+
+          <p>The fix is simple: restart your iPhone (turn it off and back on), then check the Share Sheet again to see if the shortcut appears. If it still doesn't show up, repeat the restart process until the shortcut becomes visible.</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <span>Snap Video</span>
+  </footer>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-93DGJ7EPCL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-93DGJ7EPCL');
+  </script>
+</body>
+</html>
