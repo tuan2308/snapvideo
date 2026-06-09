@@ -381,7 +381,7 @@ async function loadSheet() {
         const rows = json.table.rows || [];
 
         const latestRow = getLatestRow(rows);
-        const latestUrl = getCell(latestRow, 4);
+        const latestUrl = getCell(latestRow, 3);
 
         if (latestUrl) {
             shortcutBtn.href = latestUrl;
