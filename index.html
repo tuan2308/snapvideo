@@ -351,7 +351,7 @@ function compareVersions(a, b) {
 
 function getLatestRow(rows) {
     return rows
-        .filter(row => getCell(row, 0) && getCell(row, 4))
+        .filter(row => getCell(row, 0) && getCell(row, 3))
         .sort((a, b) => compareVersions(getCell(b, 0), getCell(a, 0)))[0];
 }
 
