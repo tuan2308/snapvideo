@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="robots" content="noindex">
   <meta name="googlebot" content="noindex">
-  <title>Snap Video</title>
+  <title>Snap Video - Tiếng Việt</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f4f8ff;
@@ -47,7 +47,7 @@
     }
     .nav-brand {
       display: flex; align-items: center; gap: 12px;
-      font-family: 'Syne', sans-serif;
+      font-family: 'Be Vietnam Pro', sans-serif;
       font-weight: 800; font-size: 1.25rem;
       letter-spacing: -0.02em;
     }
@@ -82,7 +82,7 @@
       50% { transform: translateY(-8px); }
     }
     .hero h1 {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Be Vietnam Pro', sans-serif;
       font-weight: 800; font-size: clamp(2.6rem, 6vw, 4.5rem);
       letter-spacing: -0.04em; line-height: 1.05;
       background: linear-gradient(135deg, #0d1a2e 20%, var(--accent2));
@@ -104,7 +104,7 @@
     .btn-shortcut,
     .btn-api {
       display: inline-flex; align-items: center; gap: 10px;
-      font-family: 'Syne', sans-serif;
+      font-family: 'Be Vietnam Pro', sans-serif;
       font-weight: 700; font-size: 0.95rem;
       letter-spacing: 0.01em;
       padding: 14px 28px;
@@ -169,7 +169,7 @@
       padding: 0 24px;
     }
     .section-divider span {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Be Vietnam Pro', sans-serif;
       font-weight: 700; font-size: 0.75rem;
       text-transform: uppercase; letter-spacing: 0.12em;
       color: var(--muted); white-space: nowrap;
@@ -196,7 +196,7 @@
       background: rgba(1,105,217,0.04);
     }
     .table-title {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Be Vietnam Pro', sans-serif;
       font-weight: 700; font-size: 0.95rem;
       color: var(--text);
     }
@@ -216,7 +216,7 @@
     thead tr { background: rgba(0,0,0,0.02); }
     th {
       padding: 13px 20px;
-      font-family: 'Syne', sans-serif;
+      font-family: 'Be Vietnam Pro', sans-serif;
       font-size: 0.72rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.1em;
       color: var(--muted); text-align: left;
@@ -242,7 +242,7 @@
       border: 1px solid rgba(1,105,217,0.20);
       border-radius: 8px;
       padding: 3px 10px;
-      font-family: 'Syne', sans-serif;
+      font-family: 'Be Vietnam Pro', sans-serif;
       font-weight: 700; font-size: 0.82rem;
       letter-spacing: 0.03em;
     }
@@ -263,23 +263,23 @@
 
   <nav>
     <div class="nav-brand">
-      <img src="./logo.png" alt="Snap Video Icon">
+      <img src="./logo.png" alt="Biểu tượng Snap Video">
       Snap Video
     </div>
-    <div class="nav-tag">Shortcuts</div>
+    <div class="nav-tag">Phím tắt</div>
   </nav>
 
   <section class="hero">
     <img class="hero-icon" src="./Shortcuts.png" alt="Snap Video">
-    <h1>Get Shortcuts<br>Snap Video</h1>
-    <p>Save videos instantly. The fastest way to download content directly to your library.</p>
+    <h1>Nhận phím tắt<br>Snap Video</h1>
+    <p>Lưu video tức thì. Cách nhanh nhất để tải nội dung trực tiếp về thư viện của bạn.</p>
     <div class="hero-actions">
       <a id="shortcutBtn" class="btn-shortcut is-loading" href="#" target="_blank" rel="noopener" aria-disabled="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 5v14M5 12l7 7 7-7"/>
         </svg>
         <span class="btn-spinner" aria-hidden="true">&nbsp;</span>
-        <span class="btn-label">Loading...</span>
+        <span class="btn-label">Đang tải...</span>
       </a>
       <a class="btn-api" href="https://rapidapi.com/tuan2308/api/snap-video3" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -293,20 +293,20 @@
   </section>
 
   <div class="section-divider">
-    <span>Update Log</span>
+    <span>Nhật ký cập nhật</span>
   </div>
 
   <div class="table-section">
     <div class="table-wrap">
       <div class="table-header-bar">
-        <span class="table-title">Version History</span>
-        <span class="status-dot" id="statusText">Loading...</span>
+        <span class="table-title">Lịch sử phiên bản</span>
+        <span class="status-dot" id="statusText">Đang tải...</span>
       </div>
       <table>
         <thead>
           <tr>
-            <th>Version</th>
-            <th>Update Info</th>
+            <th>Phiên bản</th>
+            <th>Nội dung cập nhật</th>
           </tr>
         </thead>
         <tbody id="sheetRows">
@@ -389,25 +389,25 @@ async function loadSheet() {
         const rows = json.table.rows || [];
 
         const latestRow = getLatestRow(rows);
-        const latestUrl = getCell(latestRow, 3);
+        const latestUrl = getCell(latestRow, 4);
 
         if (latestUrl) {
             shortcutBtn.href = latestUrl;
             shortcutBtn.classList.remove('is-loading', 'is-disabled');
             shortcutBtn.removeAttribute('aria-disabled');
-            shortcutLabel.textContent = 'Get Shortcuts';
+            shortcutLabel.textContent = 'Nhận phím tắt';
         } else {
             shortcutBtn.classList.remove('is-loading');
             shortcutBtn.classList.add('is-disabled');
             shortcutBtn.setAttribute('aria-disabled', 'true');
-            shortcutLabel.textContent = 'Unavailable';
+            shortcutLabel.textContent = 'Không khả dụng';
         }
 
         let html = '';
 
         rows.forEach(row => {
             const version = getCell(row, 0) || '-';
-            const updateInfo = getCell(row, 2) || getCell(row, 1) || '-';
+            const updateInfo = getCell(row, 1) || getCell(row, 1) || '-';
 
             html += `
                 <tr>
@@ -419,16 +419,16 @@ async function loadSheet() {
 
         sheetRows.innerHTML =
             html || `<tr class="empty-row"><td colspan="2">Không có dữ liệu</td></tr>`;
-        statusText.textContent = latestRow ? `Latest ${getCell(latestRow, 0)}` : 'No data';
+        statusText.textContent = latestRow ? `Mới nhất ${getCell(latestRow, 0)}` : 'Không có dữ liệu';
 
     } catch (err) {
         sheetRows.innerHTML =
             `<tr class="empty-row"><td colspan="2">Không thể tải dữ liệu</td></tr>`;
-        statusText.textContent = 'Load failed';
+        statusText.textContent = 'Tải thất bại';
         shortcutBtn.classList.remove('is-loading');
         shortcutBtn.classList.add('is-disabled');
         shortcutBtn.setAttribute('aria-disabled', 'true');
-        shortcutLabel.textContent = 'Unavailable';
+        shortcutLabel.textContent = 'Không khả dụng';
     }
 }
 
