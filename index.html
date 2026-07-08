@@ -7,7 +7,7 @@
   <meta name="googlebot" content="noindex">
   <title>Snap Video</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f4f8ff;
@@ -18,7 +18,9 @@
       --text: #0d1a2e;
       --muted: #6b7fa3;
       --success: #10b981;
+      --display-font: 'Syne', sans-serif;
     }
+    html[lang="vi"] { --display-font: 'Be Vietnam Pro', sans-serif; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background: var(--bg);
@@ -47,9 +49,11 @@
     }
     .nav-brand {
       display: flex; align-items: center; gap: 12px;
-      font-family: 'Syne', sans-serif;
+      font-family: var(--display-font);
       font-weight: 800; font-size: 1.25rem;
       letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
     } 
     .nav-brand img { width: 36px; height: 36px; border-radius: 10px; }
     .nav-tag {
@@ -82,7 +86,7 @@
       50% { transform: translateY(-8px); }
     }
     .hero h1 {
-      font-family: 'Syne', sans-serif;
+      font-family: var(--display-font);
       font-weight: 800; font-size: clamp(2.6rem, 6vw, 4.5rem);
       letter-spacing: -0.04em; line-height: 1.05;
       background: linear-gradient(135deg, #0d1a2e 20%, var(--accent2));
@@ -104,7 +108,7 @@
     .btn-shortcut,
     .btn-api {
       display: inline-flex; align-items: center; gap: 10px;
-      font-family: 'Syne', sans-serif;
+      font-family: var(--display-font);
       font-weight: 700; font-size: 0.95rem;
       letter-spacing: 0.01em;
       padding: 14px 28px;
@@ -169,7 +173,7 @@
       padding: 0 24px;
     }
     .section-divider span {
-      font-family: 'Syne', sans-serif;
+      font-family: var(--display-font);
       font-weight: 700; font-size: 0.75rem;
       text-transform: uppercase; letter-spacing: 0.12em;
       color: var(--muted); white-space: nowrap;
@@ -196,7 +200,7 @@
       background: rgba(1,105,217,0.04);
     }
     .table-title {
-      font-family: 'Syne', sans-serif;
+      font-family: var(--display-font);
       font-weight: 700; font-size: 0.95rem;
       color: var(--text);
     }
@@ -216,7 +220,7 @@
     thead tr { background: rgba(0,0,0,0.02); }
     th {
       padding: 13px 20px;
-      font-family: 'Syne', sans-serif;
+      font-family: var(--display-font);
       font-size: 0.72rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.1em;
       color: var(--muted); text-align: left;
@@ -242,7 +246,7 @@
       border: 1px solid rgba(1,105,217,0.20);
       border-radius: 8px;
       padding: 3px 10px;
-      font-family: 'Syne', sans-serif;
+      font-family: var(--display-font);
       font-weight: 700; font-size: 0.82rem;
       letter-spacing: 0.03em;
     }
@@ -259,59 +263,59 @@
   </style>
   <script>(function(s){s.dataset.zone='9418547',s.src='https://llvpn.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 </head>
-<body>
+<body data-page="index">
 
   <nav>
-    <div class="nav-brand">
-      <img src="./logo.png" alt="Snap Video Icon">
+    <a class="nav-brand" href="./index.html" aria-label="Snap Video Home">
+      <img src="./logo.png" alt="Snap Video Icon" data-i18n-attr="alt:common.logoAlt">
       Snap Video
-    </div>
-    <div class="nav-tag">Shortcuts</div>
+    </a>
+    <div class="nav-tag" data-i18n="common.navTag">Shortcuts</div>
   </nav>
 
   <section class="hero">
     <img class="hero-icon" src="./Shortcuts.png" alt="Snap Video">
-    <h1>Get Shortcuts<br>Snap Video</h1>
-    <p>Save videos instantly. The fastest way to download content directly to your library.</p>
+    <h1><span data-i18n="index.heroTitlePrefix">Get Shortcuts</span><br><span data-i18n="index.heroTitleSuffix">Snap Video</span></h1>
+    <p data-i18n="index.heroDescription">Save videos instantly. The fastest way to download content directly to your library.</p>
     <div class="hero-actions">
       <a id="shortcutBtn" class="btn-shortcut is-loading" href="#" target="_blank" rel="noopener" aria-disabled="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 5v14M5 12l7 7 7-7"/>
         </svg>
         <span class="btn-spinner" aria-hidden="true">&nbsp;</span>
-        <span class="btn-label">Loading...</span>
+        <span class="btn-label" data-i18n="index.buttonLoading">Loading...</span>
       </a>
-      <a class="btn-api" href="https://rapidapi.com/tuan2308/api/snap-video3" target="_blank" rel="noopener">
+      <a class="btn-api" href="./how-to-use-snap-video.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M8 9l-4 3 4 3"/>
-          <path d="M16 9l4 3-4 3"/>
-          <path d="M14 5l-4 14"/>
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 2-3 4"/>
+          <path d="M12 17h.01"/>
         </svg>
-        <span>API</span>
+        <span data-i18n="index.guideButton">Guide</span>
       </a>
     </div>
   </section>
 
   <div class="section-divider">
-    <span>Update Log</span>
+    <span data-i18n="index.updateLog">Update Log</span>
   </div>
 
   <div class="table-section">
     <div class="table-wrap">
       <div class="table-header-bar">
-        <span class="table-title">Version History</span>
-        <span class="status-dot" id="statusText">Loading...</span>
+        <span class="table-title" data-i18n="index.versionHistory">Version History</span>
+        <span class="status-dot" id="statusText" data-i18n="index.statusLoading">Loading...</span>
       </div>
       <table>
         <thead>
           <tr>
-            <th>Version</th>
-            <th>Update Info</th>
+            <th data-i18n="index.tableVersion">Version</th>
+            <th data-i18n="index.tableUpdateInfo">Update Info</th>
           </tr>
         </thead>
         <tbody id="sheetRows">
           <tr class="empty-row">
-            <td colspan="2">Đang tải dữ liệu...</td>
+            <td colspan="2" data-i18n="index.updatesLoading">Loading data...</td>
           </tr>
         </tbody>
       </table>
@@ -319,121 +323,10 @@
   </div>
 
   <footer>
-    <span>Snap Video</span>
+    <span data-i18n="common.footerBrand">Snap Video</span>
   </footer>
 
-  <script>
- const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1n-6n5S2EobNsPT_jBf6iYmYgzV-r8pmos6VZjCW9Dqw/gviz/tq?tqx=out:json&tq&gid=0';
-
-function getCell(row, index) {
-    return row?.c?.[index]?.v ?? '';
-}
-
-function versionParts(version) {
-    return String(version)
-        .trim()
-        .replace(/^v/i, '')
-        .split('.')
-        .map(part => Number.parseInt(part, 10) || 0);
-}
-
-function compareVersions(a, b) {
-    const left = versionParts(a);
-    const right = versionParts(b);
-    const length = Math.max(left.length, right.length);
-
-    for (let i = 0; i < length; i += 1) {
-        const diff = (left[i] || 0) - (right[i] || 0);
-
-        if (diff !== 0) {
-            return diff;
-        }
-    }
-
-    return 0;
-}
-
-function getLatestRow(rows) {
-    return rows
-        .filter(row => getCell(row, 0) && getCell(row, 3))
-        .sort((a, b) => compareVersions(getCell(b, 0), getCell(a, 0)))[0];
-}
-
-function escapeHtml(value) {
-    return String(value)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-}
-
-function formatUpdateInfo(value) {
-    return escapeHtml(value).replace(/\\r\\n|\\n|\\r/g, '\n');
-}
-
-async function loadSheet() {
-    const shortcutBtn = document.getElementById('shortcutBtn');
-    const shortcutLabel = shortcutBtn.querySelector('.btn-label');
-    const sheetRows = document.getElementById('sheetRows');
-    const statusText = document.getElementById('statusText');
-
-    try {
-        const res = await fetch(SHEET_URL);
-        const text = await res.text();
-
-        const json = JSON.parse(
-            text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1)
-        );
-
-        const rows = json.table.rows || [];
-
-        const latestRow = getLatestRow(rows);
-        const latestUrl = getCell(latestRow, 3);
-
-        if (latestUrl) {
-            shortcutBtn.href = latestUrl;
-            shortcutBtn.classList.remove('is-loading', 'is-disabled');
-            shortcutBtn.removeAttribute('aria-disabled');
-            shortcutLabel.textContent = 'Get Shortcuts';
-        } else {
-            shortcutBtn.classList.remove('is-loading');
-            shortcutBtn.classList.add('is-disabled');
-            shortcutBtn.setAttribute('aria-disabled', 'true');
-            shortcutLabel.textContent = 'Unavailable';
-        }
-
-        let html = '';
-
-        rows.forEach(row => {
-            const version = getCell(row, 0) || '-';
-            const updateInfo = getCell(row, 2) || getCell(row, 1) || '-';
-
-            html += `
-                <tr>
-                    <td><span class="ver-badge">${escapeHtml(version)}</span></td>
-                    <td class="update-info">${formatUpdateInfo(updateInfo)}</td>
-                </tr>
-            `;
-        });
-
-        sheetRows.innerHTML =
-            html || `<tr class="empty-row"><td colspan="2">Không có dữ liệu</td></tr>`;
-        statusText.textContent = latestRow ? `Latest ${getCell(latestRow, 0)}` : 'No data';
-
-    } catch (err) {
-        sheetRows.innerHTML =
-            `<tr class="empty-row"><td colspan="2">Không thể tải dữ liệu</td></tr>`;
-        statusText.textContent = 'Load failed';
-        shortcutBtn.classList.remove('is-loading');
-        shortcutBtn.classList.add('is-disabled');
-        shortcutBtn.setAttribute('aria-disabled', 'true');
-        shortcutLabel.textContent = 'Unavailable';
-    }
-}
-
-loadSheet();
-  </script>
+  <script src="./site.js"></script>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-93DGJ7EPCL"></script>

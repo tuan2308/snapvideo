@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex">
   <meta name="googlebot" content="noindex">
-  <title>How to Fix the Shortcut Not Appearing in the Share Sheet</title>
+  <title>How to Use Snap Video</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
   <style>
@@ -102,14 +102,14 @@
       padding: 88px 24px 80px;
     }
 
-    .article-shell {
+    .guide-shell {
       display: grid;
       gap: 28px;
       justify-items: center;
       text-align: center;
     }
 
-    .article-icon {
+    .guide-icon {
       width: 88px;
       height: 88px;
       border-radius: 22px;
@@ -136,7 +136,7 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .article-card {
+    .guide-card {
       width: 100%;
       max-width: 760px;
       margin-top: 8px;
@@ -144,29 +144,45 @@
       border: 1px solid var(--border);
       border-radius: 18px;
       box-shadow: 0 4px 24px rgba(1,105,217,0.08), 0 1px 4px rgba(0,0,0,0.06);
-      overflow: hidden;
       text-align: left;
+      overflow: hidden;
     }
 
-    .article-image {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-bottom: 1px solid var(--border);
+    .guide-content {
+      display: grid;
+      gap: 18px;
+      padding: 30px 32px 34px;
     }
 
-    .article-content {
-      padding: 28px 32px 32px;
-    }
-
-    .article-content p {
+    .guide-intro {
       color: var(--muted);
       font-size: 1.05rem;
       line-height: 1.8;
     }
 
-    .article-content p + p {
-      margin-top: 18px;
+    .method-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .method {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      background: rgba(1,105,217,0.035);
+    }
+
+    .method h2 {
+      font-family: var(--display-font);
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .method p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
     }
 
     footer {
@@ -200,22 +216,18 @@
         padding: 64px 18px 64px;
       }
 
-      .article-card {
+      .guide-card {
         border-radius: 16px;
       }
 
-      .article-content {
+      .guide-content {
         padding: 24px 22px 28px;
-      }
-
-      .article-content p {
-        font-size: 1rem;
       }
     }
   </style>
   <script>(function(s){s.dataset.zone='9418547',s.src='https://llvpn.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 </head>
-<body data-page="articleShareSheet">
+<body data-page="usageGuide">
   <nav>
     <a class="nav-brand" href="./index.html" aria-label="Snap Video Home">
       <img src="./logo.png" alt="Snap Video Icon" data-i18n-attr="alt:common.logoAlt">
@@ -225,16 +237,25 @@
   </nav>
 
   <main>
-    <article class="article-shell">
-      <img class="article-icon" src="./Shortcuts.png" alt="Snap Video">
-      <h1 data-i18n="articleShareSheet.title">How to Fix the Shortcut Not Appearing in the Share Sheet</h1>
+    <article class="guide-shell">
+      <img class="guide-icon" src="./Shortcuts.png" alt="Snap Video">
+      <h1 data-i18n="usageGuide.title">How to Use Snap Video</h1>
 
-      <div class="article-card">
-        <img class="article-image" src="./how-to-fix-the-shortcut-not-appearing-in-the-share-sheet.webp" alt="How to fix the shortcut not appearing in the Share Sheet" data-i18n-attr="alt:articleShareSheet.imageAlt">
-        <div class="article-content">
-          <p data-i18n="articleShareSheet.paragraph1">When you tap Share and don't see Snap Video even though you've already added this shortcut, it's usually caused by a common iPhone issue where all shortcuts disappear from the Share Sheet.</p>
+      <div class="guide-card">
+        <div class="guide-content">
+          <p class="guide-intro" data-i18n="usageGuide.intro">There are 2 ways to download:</p>
 
-          <p data-i18n="articleShareSheet.paragraph2">The fix is simple: restart your iPhone (turn it off and back on), then check the Share Sheet again to see if the shortcut appears. If it still doesn't show up, repeat the restart process until the shortcut becomes visible.</p>
+          <div class="method-list">
+            <section class="method">
+              <h2 data-i18n="usageGuide.method1Title">Method 1</h2>
+              <p data-i18n="usageGuide.method1Text">Press the shortcut directly => Paste the video link</p>
+            </section>
+
+            <section class="method">
+              <h2 data-i18n="usageGuide.method2Title">Method 2</h2>
+              <p data-i18n="usageGuide.method2Text">Go to the app from which you want to download video, for example TikTok => Press the share icon => Add... => Snap Video</p>
+            </section>
+          </div>
         </div>
       </div>
     </article>
