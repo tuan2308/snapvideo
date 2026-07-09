@@ -462,6 +462,22 @@
   },
   "updates": [
     {
+      "version": "2.1",
+      "info": {
+        "en": "- Fixed Douyin video download error",
+        "vi": "- Fix lỗi tải video Douyin",
+        "zh": "- 修复 Douyin 视频下载错误",
+        "ja": "- Douyin 動画のダウンロードエラーを修正",
+        "ko": "- Douyin 동영상 다운로드 오류 수정",
+        "fil": "- Inayos ang error sa pag-download ng video sa Douyin",
+        "ar": "- تم إصلاح خطأ تنزيل فيديو Douyin",
+        "ru": "- Исправлена ошибка загрузки видео Douyin",
+        "tr": "- Douyin video indirme hatası düzeltildi",
+        "de": "- Fehler beim Herunterladen von Douyin-Videos behoben"
+      },
+      "shortcutUrl": "https://www.icloud.com/shortcuts/8f77dfaf5c004777a3e1c8760b4cc343"
+    },
+    {
       "version": "2.0",
       "info": {
         "en": "Big Update\n- Optimized to reduce processing tasks by more than 30%\n- Added automatic language selection from the system\n- Removed Auto Download and replaced it with settings to show or hide the Main Menu and Select Media\n- Reduced privacy permission prompts\n- Most tasks will be processed server-side to make bug fixes easier",
