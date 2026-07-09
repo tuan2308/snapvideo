@@ -1,5 +1,5 @@
 (function () {
-  const DATA_URL = './site-data.json';
+  const DATA_URL = 'https://api.snapvideo.co/support/site_data.json';
   const STORAGE_KEY = 'snapVideoLocale';
   const page = document.body.dataset.page;
   let siteData = null;
