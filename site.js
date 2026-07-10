@@ -127,11 +127,27 @@
     document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
 
     if (page) {
-      document.title = t(`${page}.metaTitle`);
+      const pageTitle = t(`${page}.metaTitle`);
+
+      if (pageTitle) {
+        document.title = pageTitle;
+      }
     }
 
     document.querySelectorAll('[data-i18n]').forEach((element) => {
-      element.textContent = t(element.dataset.i18n);
+      const text = t(element.dataset.i18n);
+
+      if (text) {
+        element.textContent = text;
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach((element) => {
+      const html = t(element.dataset.i18nHtml);
+
+      if (html) {
+        element.innerHTML = html;
+      }
     });
 
     document.querySelectorAll('[data-i18n-attr]').forEach((element) => {
@@ -139,7 +155,11 @@
         const [attribute, key] = rule.split(':').map((part) => part.trim());
 
         if (attribute && key) {
-          element.setAttribute(attribute, t(key));
+          const value = t(key);
+
+          if (value) {
+            element.setAttribute(attribute, value);
+          }
         }
       });
     });
