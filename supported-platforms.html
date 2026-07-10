@@ -6,11 +6,10 @@
   <meta name="robots" content="noindex">
   <meta name="googlebot" content="noindex">
   <title>Supported Platforms - Snap Video</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f4f8ff;
+      --bg2: #eaf2fd;
       --card: #ffffff;
       --border: #dce8f7;
       --accent: #0169d9;
@@ -19,13 +18,10 @@
       --muted: #6b7fa3;
       --success: #10b981;
       --danger: #ef4444;
-      --display-font: 'Syne', sans-serif;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      --display-font: var(--font-family);
+      --radius: 20px;
     }
-
-    html[lang="vi"] {
-      --display-font: 'Be Vietnam Pro', sans-serif;
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -33,9 +29,9 @@
     }
 
     body {
-      background: var(--bg);
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
       color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-family);
       min-height: 100vh;
       overflow-x: hidden;
     }
@@ -46,9 +42,9 @@
       top: -200px;
       left: 50%;
       transform: translateX(-50%);
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(1,105,217,0.10) 0%, transparent 70%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(1,105,217,0.14) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -61,8 +57,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 16px 40px;
-      background: rgba(244,248,255,0.88);
-      backdrop-filter: blur(16px);
+      background: rgba(244,248,255,0.75);
+      backdrop-filter: blur(16px) saturate(160%);
       border-bottom: 1px solid var(--border);
     }
 
@@ -99,24 +95,24 @@
     main {
       position: relative;
       z-index: 1;
-      max-width: 980px;
+      max-width: 760px;
       margin: 0 auto;
       padding: 88px 24px 80px;
     }
 
     .platform-shell {
       display: grid;
-      gap: 28px;
+      gap: 24px;
       justify-items: center;
       text-align: center;
     }
 
     .platform-icon {
-      width: 88px;
-      height: 88px;
-      border-radius: 22px;
+      width: 76px;
+      height: 76px;
+      border-radius: 20px;
       box-shadow: 0 0 0 1px rgba(0,0,0,0.06),
-                  0 20px 60px rgba(1,105,217,0.18),
+                  0 20px 60px rgba(1,105,217,0.20),
                   0 4px 12px rgba(0,0,0,0.10);
       animation: float 4s ease-in-out infinite;
     }
@@ -127,24 +123,32 @@
     }
 
     h1 {
-      max-width: 820px;
+      max-width: 620px;
       font-family: var(--display-font);
       font-weight: 800;
-      font-size: clamp(2.15rem, 5vw, 4.15rem);
-      letter-spacing: -0.04em;
-      line-height: 1.08;
+      font-size: clamp(1.9rem, 4.5vw, 3.1rem);
+      letter-spacing: -0.03em;
+      line-height: 1.2;
       background: linear-gradient(135deg, #0d1a2e 20%, var(--accent2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
+    .platform-subtitle {
+      max-width: 480px;
+      margin-top: -8px;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
     .platform-card {
       width: 100%;
-      margin-top: 8px;
+      margin-top: 12px;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(1,105,217,0.08), 0 1px 4px rgba(0,0,0,0.06);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 30px rgba(1,105,217,0.10), 0 1px 4px rgba(0,0,0,0.05);
       overflow: hidden;
     }
 
@@ -153,8 +157,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 18px 24px;
-      background: rgba(1,105,217,0.04);
+      padding: 20px 26px;
+      background: linear-gradient(135deg, rgba(1,105,217,0.06), rgba(1,145,247,0.03));
       border-bottom: 1px solid var(--border);
       text-align: left;
     }
@@ -162,27 +166,27 @@
     .summary-title {
       font-family: var(--display-font);
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: var(--text);
     }
 
     .summary-count {
-      display: inline-flex;
+      display: none;
       align-items: center;
       justify-content: center;
-      min-width: 42px;
-      padding: 4px 10px;
+      min-width: 44px;
+      padding: 5px 12px;
       border-radius: 999px;
-      background: rgba(1,105,217,0.10);
-      color: var(--accent);
-      border: 1px solid rgba(1,105,217,0.20);
+      background: var(--accent);
+      color: #fff;
       font-family: var(--display-font);
       font-weight: 700;
       font-size: 0.85rem;
+      box-shadow: 0 4px 12px rgba(1,105,217,0.30);
     }
 
     .platform-grid {
-      display: block;
+      display: grid;
       background: var(--card);
     }
 
@@ -191,10 +195,11 @@
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      padding: 18px 20px;
+      padding: 17px 26px;
       background: var(--card);
-      border-bottom: 1px solid rgba(220,232,247,0.8);
+      border-bottom: 1px solid rgba(220,232,247,0.7);
       text-align: left;
+      transition: background 0.15s ease;
     }
 
     .platform-item:last-child {
@@ -202,20 +207,38 @@
     }
 
     .platform-item:hover {
-      background: rgba(1,105,217,0.04);
+      background: rgba(1,105,217,0.045);
     }
 
     .platform-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-family: var(--display-font);
       font-weight: 700;
+      font-size: 0.98rem;
       color: var(--text);
       line-height: 1.35;
+    }
+
+    .platform-dot {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 0 4px rgba(16,185,129,0.15);
+    }
+
+    .platform-item.is-disabled .platform-dot {
+      background: var(--danger);
+      box-shadow: 0 0 0 4px rgba(239,68,68,0.15);
     }
 
     .platform-status {
       flex-shrink: 0;
       border-radius: 999px;
-      padding: 4px 10px;
+      padding: 5px 12px;
       background: rgba(16,185,129,0.10);
       color: #047857;
       border: 1px solid rgba(16,185,129,0.22);
@@ -231,11 +254,28 @@
     }
 
     .platform-message {
-      padding: 42px 24px;
+      padding: 48px 24px;
       color: var(--muted);
       font-size: 0.95rem;
       text-align: center;
       background: var(--card);
+    }
+
+    .platform-message.is-loading::before {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      vertical-align: -3px;
+      border: 2px solid rgba(1,105,217,0.2);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
     footer {
@@ -266,7 +306,7 @@
       }
 
       main {
-        padding: 64px 18px 64px;
+        padding: 56px 16px 56px;
       }
 
       .platform-card {
@@ -275,12 +315,11 @@
 
       .platform-summary {
         align-items: flex-start;
-        flex-direction: column;
+        gap: 10px;
       }
 
       .platform-item {
-        align-items: flex-start;
-        flex-direction: column;
+        padding: 15px 18px;
       }
     }
   </style>
@@ -289,7 +328,7 @@
 <body>
   <nav>
     <a class="nav-brand" href="./index.html" aria-label="Snap Video Home">
-      <img src="./logo.png" alt="Snap Video Icon">
+      <img src="./imgs/logo.png" alt="Snap Video Icon">
       Snap Video
     </a>
     <div class="nav-tag">Platforms</div>
@@ -297,8 +336,9 @@
 
   <main>
     <article class="platform-shell">
-      <img class="platform-icon" src="./Shortcuts.png" alt="Snap Video">
+      <img class="platform-icon" src="./imgs/Shortcuts.png" alt="Snap Video">
       <h1 id="platformTitle">Supported Platforms</h1>
+      <p class="platform-subtitle">Real-time availability for every platform Snap Video can download from.</p>
 
       <div class="platform-card">
         <div class="platform-summary">
@@ -306,7 +346,7 @@
           <span class="summary-count" id="platformCount">0</span>
         </div>
         <div class="platform-grid" id="platformGrid">
-          <div class="platform-message">Loading platform data...</div>
+          <div class="platform-message is-loading">Loading platform data...</div>
         </div>
       </div>
     </article>
@@ -358,14 +398,18 @@
         platforms.forEach((item) => {
           const row = document.createElement('section');
           const name = document.createElement('div');
+          const dot = document.createElement('span');
+          const label = document.createElement('span');
           const status = document.createElement('div');
 
           row.className = `platform-item${item.enabled ? '' : ' is-disabled'}`;
           name.className = 'platform-name';
+          dot.className = 'platform-dot';
           status.className = 'platform-status';
-          name.textContent = item.name || item.platform || '-';
+          label.textContent = item.name || item.platform || '-';
           status.textContent = item.status || (item.enabled ? 'Active' : 'Inactive');
 
+          name.append(dot, label);
           row.append(name, status);
           gridEl.appendChild(row);
         });

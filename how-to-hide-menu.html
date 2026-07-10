@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex">
   <meta name="googlebot" content="noindex">
-  <title>How to Fix the Shortcut Not Appearing in the Share Sheet</title>
+  <title>How to Hide the Menu - Snap Video</title>
   <style>
     :root {
       --bg: #f4f8ff;
@@ -123,17 +123,36 @@
       font-family: var(--display-font);
       font-weight: 800;
       font-size: clamp(2.15rem, 5vw, 4.15rem);
-      letter-spacing: -0.04em;
+      letter-spacing: -0.02em;
       line-height: 1.2;
       background: linear-gradient(135deg, #0d1a2e 20%, var(--accent2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .article-card {
+    .thumbnail-card {
       width: 100%;
-      max-width: 760px;
-      margin-top: 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(1,105,217,0.08), 0 1px 4px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+
+    .thumbnail-image {
+      display: block;
+      width: 100%;padding: 25px;
+      height: auto;
+    }
+
+    .steps {
+      width: 100%;
+      display: grid;
+      gap: 24px;
+    }
+
+    .step-card {
+      width: 100%;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 18px;
@@ -142,25 +161,44 @@
       text-align: left;
     }
 
-    .article-image {
+    .step-image {
       display: block;
       width: 100%;
       height: auto;
+      padding:25px;
       border-bottom: 1px solid var(--border);
     }
 
-    .article-content {
-      padding: 28px 32px 32px;
+    .step-content {
+      padding: 24px 28px 28px;
     }
 
-    .article-content p {
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: rgba(1,105,217,0.10);
+      color: var(--accent);
+      font-family: var(--display-font);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .step-content h2 {
+      font-family: var(--display-font);
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    .step-content p {
       color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.8;
-    }
-
-    .article-content p + p {
-      margin-top: 18px;
+      font-size: 1rem;
+      line-height: 1.7;
     }
 
     footer {
@@ -194,22 +232,18 @@
         padding: 64px 18px 64px;
       }
 
-      .article-card {
+      .step-card {
         border-radius: 16px;
       }
 
-      .article-content {
-        padding: 24px 22px 28px;
-      }
-
-      .article-content p {
-        font-size: 1rem;
+      .step-content {
+        padding: 20px 20px 24px;
       }
     }
   </style>
   <script>(function(s){s.dataset.zone='9418547',s.src='https://llvpn.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 </head>
-<body data-page="articleShareSheet">
+<body data-page="hideMenuGuide">
   <nav>
     <a class="nav-brand" href="./index.html" aria-label="Snap Video Home">
       <img src="./imgs/logo.png" alt="Snap Video Icon" data-i18n-attr="alt:common.logoAlt">
@@ -221,14 +255,30 @@
   <main>
     <article class="article-shell">
       <img class="article-icon" src="./imgs/Shortcuts.png" alt="Snap Video">
-      <h1 data-i18n="articleShareSheet.title">How to Fix the Shortcut Not Appearing in the Share Sheet</h1>
+      <h1 data-i18n="hideMenuGuide.title">How to Hide the Menu</h1>
 
-      <div class="article-card">
-        <img class="article-image" src="./imgs/how-to-fix-the-shortcut-not-appearing-in-the-share-sheet.webp" alt="How to fix the shortcut not appearing in the Share Sheet" data-i18n-attr="alt:articleShareSheet.imageAlt">
-        <div class="article-content">
-          <p data-i18n="articleShareSheet.paragraph1">When you tap Share and don't see Snap Video even though you've already added this shortcut, it's usually caused by a common iPhone issue where all shortcuts disappear from the Share Sheet.</p>
+      <div class="thumbnail-card">
+        <img class="thumbnail-image" src="./imgs/how-to-hide-menu-0.jpg" alt="How to hide the menu" data-i18n-attr="alt:hideMenuGuide.thumbnailAlt">
+      </div>
 
-          <p data-i18n="articleShareSheet.paragraph2">The fix is simple: restart your iPhone (turn it off and back on), then check the Share Sheet again to see if the shortcut appears. If it still doesn't show up, repeat the restart process until the shortcut becomes visible.</p>
+      <div class="steps">
+        <div class="step-card">
+          <img class="step-image" src="./imgs/how-to-hide-menu-1.jpg" alt="Step 1" data-i18n-attr="alt:hideMenuGuide.step1ImageAlt">
+          <div class="step-content">
+            <span class="step-number">1</span>
+            <h2 data-i18n="hideMenuGuide.step1Title">Step 1</h2>
+            <p data-i18n="hideMenuGuide.step1Text">Open the Shortcuts app => Tap to edit the Snap Video shortcut</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <img class="step-image" src="./imgs/how-to-hide-menu-2.jpg" alt="Step 2" data-i18n-attr="alt:hideMenuGuide.step2ImageAlt">
+          <div class="step-content">
+            <span class="step-number">2</span>
+            <h2 data-i18n="hideMenuGuide.step2Title">Step 2</h2>
+            <p data-i18n-html="hideMenuGuide.step2ShowMenuText">Set <strong>show_menu</strong> to <strong>False</strong> to hide the main menu. When downloading without input, the shortcut will automatically use the clipboard as input.</p>
+            <p data-i18n-html="hideMenuGuide.step2AskFormatText">Set <strong>ask_format</strong> to <strong>False</strong> to hide the media selection menu. The shortcut will automatically choose media, excluding audio files.</p>
+          </div>
         </div>
       </div>
     </article>

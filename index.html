@@ -6,8 +6,6 @@
   <meta name="robots" content="noindex">
   <meta name="googlebot" content="noindex">
   <title>Snap Video</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f4f8ff;
@@ -18,14 +16,14 @@
       --text: #0d1a2e;
       --muted: #6b7fa3;
       --success: #10b981;
-      --display-font: 'Syne', sans-serif;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      --display-font: var(--font-family);
     }
-    html[lang="vi"] { --display-font: 'Be Vietnam Pro', sans-serif; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-family);
       min-height: 100vh;
       overflow-x: hidden;
     }
@@ -88,7 +86,7 @@
     .hero h1 {
       font-family: var(--display-font);
       font-weight: 800; font-size: clamp(2.6rem, 6vw, 4.5rem);
-      letter-spacing: -0.04em; line-height: 1.05;
+      letter-spacing: -0.04em; line-height: 1.2;
       background: linear-gradient(135deg, #0d1a2e 20%, var(--accent2));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       margin-bottom: 16px;
@@ -267,14 +265,14 @@
 
   <nav>
     <a class="nav-brand" href="./index.html" aria-label="Snap Video Home">
-      <img src="./logo.png" alt="Snap Video Icon" data-i18n-attr="alt:common.logoAlt">
+      <img src="./imgs/logo.png" alt="Snap Video Icon" data-i18n-attr="alt:common.logoAlt">
       Snap Video
     </a>
     <div class="nav-tag" data-i18n="common.navTag">Shortcuts</div>
   </nav>
 
   <section class="hero">
-    <img class="hero-icon" src="./Shortcuts.png" alt="Snap Video">
+    <img class="hero-icon" src="./imgs/Shortcuts.png" alt="Snap Video">
     <h1><span data-i18n="index.heroTitlePrefix">Get Shortcuts</span><br><span data-i18n="index.heroTitleSuffix">Snap Video</span></h1>
     <p data-i18n="index.heroDescription">Save videos instantly. The fastest way to download content directly to your library.</p>
     <div class="hero-actions">
@@ -326,7 +324,7 @@
     <span data-i18n="common.footerBrand">Snap Video</span>
   </footer>
 
-  <script src="./site.js?v=1"></script>
+  <script src="./site.js?v=2"></script>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-93DGJ7EPCL"></script>
