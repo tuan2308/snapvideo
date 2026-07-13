@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>Bỏ giới hạn IP - Snap Video</title>
+  <style>
+    :root {
+      --bg: #f4f8ff;
+      --card: #ffffff;
+      --border: #dce8f7;
+      --accent: #0169d9;
+      --accent2: #0191f7;
+      --text: #0d1a2e;
+      --muted: #6b7fa3;
+      --success: #10b981;
+      --error: #e5484d;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      color: var(--text);
+      background: var(--bg);
+      font-family: var(--font-family);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      width: 700px;
+      height: 700px;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(1,105,217,.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(244,248,255,.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      text-decoration: none;
+    }
+    .nav-brand img { width: 36px; height: 36px; border-radius: 10px; }
+    .nav-tag {
+      padding: 3px 9px;
+      color: var(--accent);
+      background: rgba(1,105,217,.12);
+      border: 1px solid rgba(1,105,217,.22);
+      border-radius: 20px;
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    main {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      width: 100%;
+      display: grid;
+      place-items: center;
+      padding: 72px 24px;
+    }
+    .page-shell { width: min(100%, 540px); text-align: center; }
+    .guide-icon {
+      width: 88px;
+      height: 88px;
+      margin-bottom: 24px;
+      border-radius: 22px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.06), 0 20px 60px rgba(1,105,217,.18), 0 4px 12px rgba(0,0,0,.10);
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    h1 {
+      margin-bottom: 12px;
+      font-size: clamp(2.15rem, 6vw, 3.35rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -.035em;
+      background: linear-gradient(135deg, var(--text) 20%, var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .lead { max-width: 460px; margin: 0 auto 30px; color: var(--muted); line-height: 1.7; }
+    .card {
+      padding: 28px;
+      text-align: left;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(1,105,217,.08), 0 1px 4px rgba(0,0,0,.06);
+    }
+    .ip-box { padding: 16px 18px; margin-bottom: 16px; border: 1px solid var(--border); border-radius: 14px; background: rgba(1,105,217,.04); }
+    .label { display: block; margin-bottom: 7px; color: var(--muted); font-size: 13px; }
+    #ip { font: 700 18px ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+    #status { min-height: 22px; margin: 0 0 8px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+    #status.success { color: var(--success); }
+    #status.error { color: var(--error); }
+    #usage { margin: 0 0 18px; color: var(--muted); font-size: 13px; }
+    button {
+      width: 100%;
+      min-height: 50px;
+      border: 0;
+      border-radius: 14px;
+      color: #fff;
+      background: var(--accent);
+      box-shadow: 0 8px 30px rgba(1,105,217,.28);
+      font: 700 16px var(--font-family);
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s, opacity .2s;
+    }
+    button:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 38px rgba(1,105,217,.38); }
+    button:active:not(:disabled) { transform: translateY(0); }
+    button:disabled { cursor: wait; opacity: .58; box-shadow: none; }
+    .note { margin: 15px 8px 0; color: var(--muted); font-size: 12px; line-height: 1.55; text-align: center; }
+    footer { position: relative; z-index: 1; padding: 28px; color: var(--muted); border-top: 1px solid var(--border); font-size: .8rem; text-align: center; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 18px; }
+    .footer-links a { color: var(--muted); text-decoration: none; transition: color .15s; }
+    .footer-links a:hover { color: var(--accent); }
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      .nav-brand { font-size: 1.05rem; }
+      .nav-tag { display: none; }
+      main { padding: 52px 18px; }
+      .card { padding: 22px 20px; border-radius: 16px; }
+    }
+  </style>
+  <script>(function(s){s.dataset.zone='9418547',s.src='https://llvpn.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</head>
+<body data-page="removeLimit">
+  <nav>
+    <a class="nav-brand" href="./index.html" aria-label="Trang chủ Snap Video">
+      <img src="./imgs/logo.png" alt="Biểu tượng Snap Video" data-i18n-attr="alt:common.logoAlt">
+      Snap Video
+    </a>
+    <div class="nav-tag" data-i18n="common.navTag">Shortcuts</div>
+  </nav>
+  <main>
+    <section class="page-shell">
+      <img class="guide-icon" src="./imgs/Shortcuts.png" alt="Snap Video">
+      <h1 data-i18n="removeLimit.title">Bỏ giới hạn IP</h1>
+      <p class="lead" data-i18n="removeLimit.description">Đặt lại bộ đếm và trạng thái chặn tự động cho địa chỉ IP hiện tại.</p>
+      <div class="card">
+        <div class="ip-box">
+          <span class="label" data-i18n="removeLimit.ipLabel">Địa chỉ IP của bạn</span>
+          <span id="ip" data-i18n="removeLimit.checking">Đang kiểm tra…</span>
+        </div>
+        <div id="status" role="status" aria-live="polite" data-i18n="removeLimit.loadingStatus">Đang tải trạng thái giới hạn…</div>
+        <div id="usage" data-i18n="removeLimit.loadingUsage">Số lượt mở hôm nay: đang tải…</div>
+        <button id="removeButton" type="button" disabled data-i18n="removeLimit.button">Bỏ giới hạn lần này</button>
+        <p class="note" data-i18n="removeLimit.note">Thao tác này không tạo whitelist vĩnh viễn và không gỡ chặn thủ công.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-links" role="navigation" aria-label="Footer navigation">
+      <a href="./index.html" data-i18n="common.footerHome">Home</a>
+      <a href="./how-to-use-snap-video.html" data-i18n="common.footerGuide">How to use</a>
+      <a href="./how-to-hide-menu.html" data-i18n="common.footerMenu">Hide menu</a>
+      <a href="./how-to-fix-the-shortcut-not-appearing-in-the-share-sheet.html" data-i18n="common.footerShare">Share Sheet missing?</a>
+      <a href="./supported-platforms.html" data-i18n="common.footerPlatforms">Supported platforms</a>
+      <a href="./remove-limit.html" data-i18n="common.footerUnlock">Remove limit</a>
+    </div>
+  </footer>
+  <script src="./site.js?v=3"></script>
+  <script>
+    // const currentHostname = window.location.hostname.toLowerCase().replace(/\.$/, '');
+    // const isSnapVideoDomain = currentHostname === 'snapvideo.co' || currentHostname.endsWith('.snapvideo.co');
+
+    // if (!isSnapVideoDomain) {
+    //   window.location.replace('https://google.com/');
+    //   throw new Error('Domain không được phép.');
+    // }
+
+    const apiUrl = 'https://api.snapvideo.co/support/remove-limit-api.php';
+    const ipElement = document.querySelector('#ip');
+    const statusElement = document.querySelector('#status');
+    const usageElement = document.querySelector('#usage');
+    const button = document.querySelector('#removeButton');
+    let manuallyBlocked = false;
+    let dailyRemaining = 0;
+    let unlockToken = '';
+    let currentState = null;
+    let currentUsage = null;
+    let currentIp = '';
+    let unknownIp = false;
+    let isProcessing = false;
+
+    function translate(key, replacements, fallback) {
+      return window.getSnapVideoText?.(`removeLimit.${key}`, replacements) || fallback;
+    }
+
+    function updateUsage(dailyUnlock) {
+      const usage = dailyUnlock || { used: 0, limit: 10, remaining: 10 };
+      currentUsage = usage;
+      dailyRemaining = usage.remaining;
+      usageElement.textContent = translate('usage', usage, `Số lượt mở hôm nay: ${usage.used}/${usage.limit} — còn ${usage.remaining} lượt`);
+      button.disabled = manuallyBlocked || dailyRemaining < 1;
+    }
+
+    function showStatus(message, type = '') {
+      statusElement.textContent = message;
+      statusElement.className = type;
+    }
+
+    function describeState(state) {
+      if (state.manual_blocked) return translate('manualBlocked', null, 'IP đang bị quản trị viên chặn.');
+      if (state.auto_blocked) return translate('autoBlocked', { until: state.auto_blocked_until }, `IP đang bị giới hạn đến ${state.auto_blocked_until}.`);
+      if (state.request_count > 0) return translate('requestCount', { count: state.request_count }, `Đã dùng ${state.request_count} lượt trong cửa sổ hiện tại.`);
+      return translate('notBlocked', null, 'IP hiện không bị giới hạn.');
+    }
+
+    async function request(options = {}) {
+      const response = await fetch(apiUrl, { cache: 'no-store', credentials: 'same-origin', ...options });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        const error = new Error(data.message || translate('requestFailed', null, 'Yêu cầu không thành công.'));
+        error.data = data;
+        throw error;
+      }
+      return data;
+    }
+
+    async function loadStatus() {
+      try {
+        const data = await request();
+        currentIp = data.ip;
+        unknownIp = false;
+        ipElement.textContent = currentIp;
+        currentState = data.state;
+        showStatus(describeState(data.state));
+        manuallyBlocked = Boolean(data.state.manual_blocked);
+        unlockToken = data.unlock_token || '';
+        updateUsage(data.daily_unlock);
+      } catch (error) {
+        unknownIp = true;
+        ipElement.textContent = translate('unknownIp', null, 'Không xác định');
+        showStatus(error.message, 'error');
+      }
+    }
+
+    button.addEventListener('click', async () => {
+      isProcessing = true;
+      button.disabled = true;
+      button.textContent = translate('processing', null, 'Đang xử lý…');
+      showStatus(translate('resetting', null, 'Đang đặt lại giới hạn cho IP…'));
+      try {
+        const data = await request({
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token: unlockToken })
+        });
+        unlockToken = data.unlock_token || '';
+        showStatus(data.message, 'success');
+        updateUsage(data.daily_unlock);
+      } catch (error) {
+        if (error.data && error.data.daily_unlock) updateUsage(error.data.daily_unlock);
+        showStatus(error.message, 'error');
+        if (error.message.toLowerCase().includes('token')) {
+          await loadStatus();
+        }
+      } finally {
+        isProcessing = false;
+        button.disabled = manuallyBlocked || dailyRemaining < 1;
+        button.textContent = translate('button', null, 'Bỏ giới hạn lần này');
+      }
+    });
+
+    document.addEventListener('snapvideo:localechange', () => {
+      if (currentIp) ipElement.textContent = currentIp;
+      if (unknownIp) ipElement.textContent = translate('unknownIp', null, 'Không xác định');
+      if (currentState) showStatus(describeState(currentState), statusElement.className);
+      if (currentUsage) updateUsage(currentUsage);
+      if (!isProcessing) button.textContent = translate('button', null, 'Bỏ giới hạn lần này');
+    });
+
+    loadStatus();
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-93DGJ7EPCL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-93DGJ7EPCL');
+  </script>
+</body>
+</html>

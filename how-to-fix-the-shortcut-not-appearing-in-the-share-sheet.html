@@ -173,9 +173,9 @@
       border-top: 1px solid var(--border);
     }
 
-    footer span {
-      color: var(--accent);
-    }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 18px; }
+    .footer-links a { color: var(--muted); text-decoration: none; transition: color .15s; }
+    .footer-links a:hover { color: var(--accent); }
 
     @media (max-width: 640px) {
       nav {
@@ -235,7 +235,14 @@
   </main>
 
   <footer>
-    <span data-i18n="common.footerBrand">Snap Video</span>
+    <div class="footer-links" role="navigation" aria-label="Footer navigation">
+      <a href="./index.html" data-i18n="common.footerHome">Home</a>
+      <a href="./how-to-use-snap-video.html" data-i18n="common.footerGuide">How to use</a>
+      <a href="./how-to-hide-menu.html" data-i18n="common.footerMenu">Hide menu</a>
+      <a href="./how-to-fix-the-shortcut-not-appearing-in-the-share-sheet.html" data-i18n="common.footerShare">Share Sheet missing?</a>
+      <a href="./supported-platforms.html" data-i18n="common.footerPlatforms">Supported platforms</a>
+      <a href="./remove-limit.html" data-i18n="common.footerUnlock">Remove limit</a>
+    </div>
   </footer>
 
   <script src="./site.js?v=2"></script>

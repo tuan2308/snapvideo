@@ -163,6 +163,10 @@
         }
       });
     });
+
+    document.dispatchEvent(new CustomEvent('snapvideo:localechange', {
+      detail: { locale }
+    }));
   }
 
   function versionParts(version) {
@@ -310,6 +314,7 @@
 
       siteData = await response.json();
       locale = detectLocale(siteData);
+      window.getSnapVideoText = t;
       applyTextTranslations();
       renderUpdates();
       exposeDemoControls();
