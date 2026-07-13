@@ -323,6 +323,27 @@
       }
     }
   </style>
+  <script>
+  (function(){
+    var supportsES6 = (function() {
+      try {
+        // Thử cú pháp ES6: arrow function, let
+        new Function("let x = (y => y+1)(1);");
+        return true;
+      } catch (err) {
+        return false;
+      }
+    })();
+
+    if (!supportsES6) {
+      // Tạo thẻ script để tải polyfills
+      var script = document.createElement('script');
+      script.src = "https://cdn.jsdelivr.net/npm/es6-shim/es6-shim.min.js";
+      script.async = false;
+      document.head.appendChild(script);
+    }
+  })();
+  </script>
   <script>(function(s){s.dataset.zone='9418547',s.src='https://llvpn.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 </head>
 <body>
